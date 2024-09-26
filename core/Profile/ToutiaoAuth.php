@@ -14,7 +14,6 @@ use AuthenticationOauth\AdvertiserGet;
 use core\Exception\TouTiaoException;
 use core\Http\HttpRequest;
 use core\Profile\RequestInteface;
-use KuaishouSdk\KuaishouClient;
 
 class ToutiaoAuth
 {
@@ -41,8 +40,12 @@ class ToutiaoAuth
         $this->app_id = $app_id;
         $this->secret = $secret;
         $this->is_sanbox = $is_sanbox;
-        if (null !== $server_url) $this->server_url = $server_url;
-        if (null !== $box_url) $this->box_url = $box_url;
+        if (null !== $server_url) {
+            $this->server_url = $server_url;
+        }
+        if (null !== $box_url) {
+            $this->box_url = $box_url;
+        }
     }
 
 
@@ -100,12 +103,12 @@ class ToutiaoAuth
     public function getAuthCodeUrl($cb_url, $scope, $state = "your_custom_params")
     {
         $cb_url_encode = urlencode($cb_url);
-        return "https://qianchuan.jinritemai.com/openapi/qc/audit/oauth.html?app_id=$this->app_id&state=$state&scope=$scope&material_auth=1&redirect_uri={$cb_url_encode}";
+        return "https://qianchuan.jinritemai.com/openapi/qc/audit/oauth.html?app_id=$this->app_id&state=$state&material_auth=1&redirect_uri={$cb_url_encode}";
     }
 
     /**
      * @param $access_token
-     * @return KuaishouClient
+     * @return TouTiaoClient
      */
     public function makeClient($access_token)
     {
@@ -120,4 +123,3 @@ class ToutiaoAuth
         return $this->execute($request)->getBody();
     }
 }
-
