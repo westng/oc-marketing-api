@@ -3,7 +3,7 @@
  * @Date: 2024-09-27 09:53:13
  * @Description: 获取纵横组织下账户列表
  * @LastEditors: west_ng 457395070@qq.com
- * @LastEditTime: 2024-09-27 09:55:27
+ * @LastEditTime: 2024-09-27 12:08:03
  * @FilePath: /oc-marketing-api/Account/Information/AccountCustomerCenterAdvertiserList.php
  */
 
@@ -18,12 +18,6 @@ class AccountCustomerCenterAdvertiserList extends RpcRequest
     protected $url = 'https://ad.oceanengine.com/open_api/2/customer_center/advertiser/list/';
     protected $method = 'GET';
     protected $content_type = 'application/json';
-
-    /**
-     * 纵横组织id
-     * @var int $cc_account_id
-     */
-    protected $cc_account_id;
 
     /**
      * @param mixed $args
@@ -42,6 +36,5 @@ class AccountCustomerCenterAdvertiserList extends RpcRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->cc_account_id, 'cc_account_id');
     }
 }
