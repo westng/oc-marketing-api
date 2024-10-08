@@ -40,7 +40,8 @@
             "Project\\": "Project/",
             "Promotion\\": "Promotion/",
             "PushAsYouWish\\": "PushAsYouWish/",
-            "ProductManage\\": "ProductManage/"
+            "ProductManage\\": "ProductManage/",
+            "KeywordManage\\": "KeywordManage/"
         }
     }
 }

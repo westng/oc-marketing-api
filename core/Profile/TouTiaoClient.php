@@ -26,18 +26,28 @@ class TouTiaoClient
     private static $instance = null;
 
     // 禁止被实例化
-    private function __construct($access_token, $is_sanbox, $server_url, $box_url){}
+    private function __construct($access_token, $is_sanbox, $server_url, $box_url)
+    {
+    }
 
     // 禁止clone
-    private function __clone(){}
+    private function __clone()
+    {
+    }
 
     //  实例化自己并保存到$instance中，已实例化则直接调用
     public static function getInstance($access_token, $is_sanbox, $server_url, $box_url): object
     {
         static::$access_token = $access_token;
-        if (null !== $is_sanbox) static::$is_sanbox = $is_sanbox;
-        if (null !== $server_url) static::$server_url = $server_url;
-        if (null !== $box_url) static::$box_url = $box_url;
+        if (null !== $is_sanbox) {
+            static::$is_sanbox = $is_sanbox;
+        }
+        if (null !== $server_url) {
+            static::$server_url = $server_url;
+        }
+        if (null !== $box_url) {
+            static::$box_url = $box_url;
+        }
         if (empty(self::$instance[$access_token])) {
             self::$instance[$access_token] = new self($access_token, $is_sanbox, $server_url, $box_url);
         }
@@ -169,5 +179,10 @@ class TouTiaoClient
     public static function ProductManage()
     {
         return new \ProductManage\Module(self::$instance[static::$access_token]);
+    }
+
+    public static function KeywordManage()
+    {
+        return new \KeywordManage\Module(self::$instance[static::$access_token]);
     }
 }
